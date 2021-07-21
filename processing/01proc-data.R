@@ -37,7 +37,7 @@ casen96 <- casen96 %>% dplyr::mutate(rama2 = case_when(rama == 0 ~ "Actividad no
                                                  rama == 8 ~ "Establecimientos financieros",
                                                  rama == 9 ~ "Servicios comunales"))
 
-casen96 <- casen96 %>% select(o8, activ, rama2, expr, estrato, o10)
+casen96 <- casen96 %>% select(o8, activ, rama2, expr, estrato, o10, yopraj)
 
 # CASEN 98
 casen98$o8 <- as_factor(casen98$o8)
@@ -53,7 +53,7 @@ casen98 <- casen98 %>% dplyr::mutate(rama2 = case_when(rama == 0 ~ "Actividad no
                                                        rama == 8 ~ "Establecimientos financieros",
                                                        rama == 9 ~ "Servicios comunales"))
 
-casen98 <- casen98 %>% select(o21, o8, estrato, expr, rama2, oficio, o10)
+casen98 <- casen98 %>% select(o21, o8, estrato, expr, rama2, oficio, o10, yopraj)
 
 # CASEN 2000
 casen20$o10 <- car::recode(casen20$o10, "1 = 1; 2 = 2; c(3,4) = 3; 5 = 4; c(6,7) = 5; 8 = 6; 9 = 7")# 3 = publicos/ 4=privados (sin trb domest)
@@ -91,7 +91,7 @@ casen20 <- casen20 %>% dplyr::mutate(rama2 = case_when(rama == 0 ~ "Actividad no
                                                        rama == 9 ~ "Servicios comunales"))
 
 
-casen20 <- casen20 %>% select(activ, o10, p18, estrato, expr, rama2, ciuo, o13)
+casen20 <- casen20 %>% select(activ, o10, p18, estrato, expr, rama2, ciuo, o13, yopraj)
 
 
 # CASEN 2003
@@ -130,7 +130,7 @@ casen03 <- casen03 %>% dplyr::mutate(rama2 = case_when(rama == 0 ~ "Actividad no
                                                        rama == 9 ~ "Servicios comunales"))
 
 
-casen03 <- casen03 %>% select(activ, o9, ciuo, rama2, r18, o14, estrato, expr)
+casen03 <- casen03 %>% select(activ, o9, ciuo, rama2, r18, o14, estrato, expr, yopraj)
 
 # CASEN 2006
 casen06$o19 <- car::recode(casen06$o19, "1 = 1; 2 = 2; c(3,4) = 3; 5 = 4; c(6,7) = 5; 8 = 6; 9 = 7") # 3 = publicos/ 4=privados (sin trb domest)
@@ -147,7 +147,7 @@ casen06 <- casen06 %>% dplyr::mutate(rama2 = case_when(rama == 0 ~ "Actividad no
                                                        rama == 8 ~ "Establecimientos financieros",
                                                        rama == 9 ~ "Servicios comunales"))
 
-casen06 <- casen06 %>% select(activ, rama2, o19, expr, estrato, o13) 
+casen06 <- casen06 %>% select(activ, rama2, o19, expr, estrato, o13, yopraj) 
 
 # CASEN 2009
 casen09$activ <- as_factor(casen09$activ)
@@ -197,7 +197,7 @@ casen09 <- casen09 %>% mutate(afiliado = case_when(t18b == 1 ~ "Vecinal",
                                                    is.na(t18b)&t18a == 12 ~ "Juvenil"))
 
 
-casen09 <- casen09 %>% select(activ, o23, afiliado, c_o12, rama2, o14, expr_p, estrato)
+casen09 <- casen09 %>% select(activ, o23, afiliado, c_o12, rama2, o14, expr_p, estrato, yopraj)
 
 
 # CASEN 2011 
@@ -215,7 +215,7 @@ casen11 <- casen11 %>% mutate(rama2 = case_when(rama1 == 1 | rama1 == 2 ~ "Agric
                                                 rama1 == 12 | rama1 == 13 | rama1 == 14 | rama1 == 15 | rama1 == 16 |rama1 ==17 ~ "Servicios comunales",
                                                 rama1 == 18 ~ "Actividad no especificada"))
 
-casen11 <- casen11 %>% select(activ, o15, rama2, o24, varstrat, expr_r2)
+casen11 <- casen11 %>% select(activ, o15, rama2, o24, varstrat, expr_r2, yopraj)
 
 # CASEN 2013
 casen13$activ <- as_factor(casen13$activ)
@@ -238,7 +238,7 @@ casen13 <- casen13 %>% mutate (rama2 = case_when(rama1 == 1 | rama1 == 2 ~ "Agri
                                                  rama1 == 12 | rama1 == 13 | rama1 == 14 | rama1 == 15 | rama1 == 16 |rama1 ==17 ~ "Servicios comunales",
                                                  rama1 == 99 ~ "Actividad no especificada"))
 
-casen13 <- casen13 %>% select(activ, o15, rama2, o24, r9, oficio4_n, varstrat, expr)
+casen13 <- casen13 %>% select(activ, o15, rama2, o24, r9, oficio4_n, varstrat, expr, yoprcor)
 
 # CASEN 2015
 casen15$activ <- as_factor(casen15$activ)
@@ -264,7 +264,7 @@ casen15$oficio4 <- car::recode(casen15$oficio4, recodes = "1110:1319='Grupo1'; 2
                           4110:4223='Grupo4'; 5111:5230='Grupo5'; 6100:6210='Grupo6'; 7110:7442='Grupo7'; 
                           8111:8340='Grupo8'; 9111:9333='Grupo9'; 0110='FFAA';  9999 = NA")
 
-casen15 <- casen15 %>% select(activ, o15, rama2, o23, o24a, o24b, o24d, varstrat, expr, oficio4)
+casen15 <- casen15 %>% select(activ, o15, rama2, o23, o24a, o24b, o24d, varstrat, expr, oficio4, yoprcor)
 
 # CASEN 2017
 casen17$o15 <- as_factor(casen17$o15)
@@ -289,7 +289,7 @@ casen17 <- casen17 %>% mutate (rama2 = case_when(rama1 == 1 | rama1 == 2 ~ "Agri
                                                  rama1 == 12 | rama1 == 13 | rama1 == 14 | rama1 == 15 | rama1 == 16 |rama1 ==17 ~ "Servicios comunales",
                                                  rama1 == 999 ~ "Actividad no especificada"))
 
-casen17 <- casen17 %>% select(activ, o15, rama2, oficio4, o23, o24a, o24b, o24d, varstrat, expr)
+casen17 <- casen17 %>% select(activ, o15, rama2, oficio4, o23, o24a, o24b, o24d, varstrat, expr, yoprcor)
 
 # 4. Guardar ----
 save(casen96, file = "input/casen96.RData")
